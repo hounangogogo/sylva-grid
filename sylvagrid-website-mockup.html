@@ -169,6 +169,54 @@
   .pillar li::before{ content:'—'; position:absolute; left:0; color:var(--copper); }
   @media(max-width:860px){ .pillars{ grid-template-columns:1fr; } }
 
+  /* ---------- CATALOG ---------- */
+  .catalog{ background:var(--bg-1); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+  .catalog-intro{ display:flex; justify-content:space-between; align-items:flex-end; gap:32px; flex-wrap:wrap; margin-bottom:40px; }
+  .catalog-tabs{ display:flex; gap:8px; flex-wrap:wrap; }
+  .catalog-tab{
+    font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:0.04em;
+    padding:9px 16px; border:1px solid var(--line); color:var(--text-1);
+    border-radius:20px; cursor:pointer; background:transparent; transition:all .18s;
+  }
+  .catalog-tab:hover{ border-color:var(--text-1); color:var(--text-0); }
+  .catalog-tab.active{ background:var(--teal); border-color:var(--teal); color:var(--bg-0); font-weight:600; }
+
+  .catalog-group{ margin-bottom:56px; }
+  .catalog-group:last-child{ margin-bottom:0; }
+  .catalog-group-head{ display:flex; align-items:baseline; gap:14px; margin-bottom:6px; flex-wrap:wrap; }
+  .catalog-group-head h3{ font-size:19px; color:var(--text-0); font-weight:500; }
+  .catalog-group-sub{ font-size:13px; color:var(--text-2); font-family:'IBM Plex Mono',monospace; }
+  .catalog-note{ font-size:14px; color:var(--text-1); margin-bottom:22px; max-width:640px; }
+
+  .table-scroll{ overflow-x:auto; border:1px solid var(--line); border-radius:var(--radius); }
+  table.cell-table{ width:100%; border-collapse:collapse; min-width:900px; }
+  .cell-table thead th{
+    text-align:left; font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.05em;
+    text-transform:uppercase; color:var(--text-2); background:var(--bg-2);
+    padding:14px 16px; border-bottom:1px solid var(--line); white-space:nowrap;
+  }
+  .cell-table tbody td{
+    padding:14px 16px; border-bottom:1px solid var(--line); font-size:13.5px; color:var(--text-1);
+    white-space:nowrap;
+  }
+  .cell-table tbody tr:last-child td{ border-bottom:none; }
+  .cell-table tbody tr{ transition:background .15s; }
+  .cell-table tbody tr:hover{ background:var(--bg-2); }
+  .cell-table tbody tr.is-hidden{ display:none; }
+  .cell-name{ color:var(--text-0); font-weight:500; font-family:'IBM Plex Mono',monospace; }
+  .type-pill{
+    display:inline-block; font-family:'IBM Plex Mono',monospace; font-size:11px;
+    padding:4px 10px; border-radius:12px; border:1px solid; letter-spacing:0.03em;
+  }
+  .type-pill.lmb{ color:var(--copper); border-color:var(--copper-dim); background:rgba(208,138,79,0.08); }
+  .type-pill.afb{ color:var(--teal); border-color:var(--teal-dim); background:rgba(79,227,184,0.08); }
+  .type-pill.ssb{ color:#7FB2E8; border-color:#3E6A93; background:rgba(127,178,232,0.08); }
+  .catalog-group[data-hidden="true"]{ display:none; }
+  .catalog-footnote{ margin-top:28px; font-size:13px; color:var(--text-2); max-width:700px; }
+  @media(max-width:760px){
+    .catalog-intro{ flex-direction:column; align-items:flex-start; }
+  }
+
   /* ---------- PROCESS ---------- */
   .process{ background:var(--bg-1); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
   .process-list{ display:flex; flex-direction:column; }
@@ -256,6 +304,7 @@
     <div class="nav-links">
       <a href="#context">Why It's Hard</a>
       <a href="#services">Services</a>
+      <a href="#catalog">Cell Catalog</a>
       <a href="#process">Process</a>
       <a href="#compliance">Compliance</a>
       <a href="#contact">Contact</a>
@@ -300,7 +349,7 @@
     <div class="hero-content">
       <div class="eyebrow">Vancouver / Richmond, BC · Cell Sourcing &amp; Export</div>
       <h1>China's cell manufacturing,<br>routed straight to <em>your pack line</em>.</h1>
-      <p>SylvaGrid is the Canadian-based bridge between vetted Chinese Li-ion cell manufacturers and international pack builders — sourcing, compliance, and supply continuity, handled by a team fluent in both sides of the transaction.</p>
+      <p>SylvaGrid is the bridge between vetted Chinese battery cell manufacturers and pack builders anywhere in the world — sourcing, compliance, and supply continuity, handled by a team fluent in both sides of the transaction.</p>
       <div class="hero-ctas">
         <a href="#contact" class="btn-primary">
           Request a sourcing call
@@ -316,12 +365,12 @@
         <div class="stat-label mono">documentation verified<br>on every sourced cell</div>
       </div>
       <div>
-        <div class="stat-num">CN ⇄ CA</div>
+        <div class="stat-num">CN ⇄ World</div>
         <div class="stat-label mono">on-the-ground teams,<br>both sides of the deal</div>
       </div>
       <div>
-        <div class="stat-num">Phase 2</div>
-        <div class="stat-label mono">pack distribution<br>rolling out next</div>
+        <div class="stat-num">16+</div>
+        <div class="stat-label mono">cell models in active<br>catalog, growing monthly</div>
       </div>
     </div>
   </div>
@@ -398,6 +447,98 @@
         </ul>
       </div>
     </div>
+  </div>
+</section>
+
+<section class="catalog" id="catalog">
+  <div class="wrap">
+    <div class="catalog-intro">
+      <div class="section-head" style="margin-bottom:0;">
+        <div class="section-label">Current catalog</div>
+        <h2>16 cells, vetted and ready to quote.</h2>
+        <p>A live sample of the manufacturer portfolio we currently broker — specialized UAV, long-range, heavy-load, and robotics cells across lithium-metal, anode-free, and semi-solid-state chemistries. Full datasheets and pricing available on request.</p>
+      </div>
+      <div class="catalog-tabs" role="tablist" aria-label="Filter cell catalog by chemistry">
+        <button class="catalog-tab active" data-filter="all">All Chemistries</button>
+        <button class="catalog-tab" data-filter="lmb">LMB</button>
+        <button class="catalog-tab" data-filter="afb">AFB</button>
+        <button class="catalog-tab" data-filter="ssb">SSB</button>
+      </div>
+    </div>
+
+    <div class="catalog-group" data-types="lmb afb">
+      <div class="catalog-group-head">
+        <h3>Ultra-High-Energy-Density Lithium-Metal &amp; Anode-Free Series</h3>
+        <span class="catalog-group-sub mono">LMB / AFB · Specialized UAV</span>
+      </div>
+      <p class="catalog-note">Built for weight-constrained specialized UAV platforms — highest energy density in the portfolio, rated for continuous discharge up to 8C and operating temperatures down to −30°C.</p>
+      <div class="table-scroll">
+        <table class="cell-table">
+          <thead>
+            <tr>
+              <th>Model</th>
+              <th>Chemistry</th>
+              <th>Application</th>
+              <th>Capacity (Ah)</th>
+              <th>Voltage Platform (V)</th>
+              <th>Operating Voltage (V)</th>
+              <th>Energy Density (Wh/kg)</th>
+              <th>Cont. Discharge</th>
+              <th>Peak Pulse</th>
+              <th>Temp Range (°C)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-type="lmb"><td class="cell-name">11Ah LMB</td><td><span class="type-pill lmb">LMB</span></td><td>Specialized UAV</td><td>11</td><td>3.8</td><td>3.0–4.3</td><td>400</td><td>8C</td><td>10C@10s</td><td>−30–60</td></tr>
+            <tr data-type="lmb"><td class="cell-name">12Ah LMB</td><td><span class="type-pill lmb">LMB</span></td><td>Specialized UAV</td><td>12</td><td>3.8</td><td>3.0–4.3</td><td>500</td><td>3C</td><td>6C@10s</td><td>−30–60</td></tr>
+            <tr data-type="afb"><td class="cell-name">28Ah AFB</td><td><span class="type-pill afb">AFB</span></td><td>Specialized UAV</td><td>28</td><td>3.8</td><td>3.0–4.3</td><td>530</td><td>4C</td><td>5C@10s</td><td>−30–60</td></tr>
+            <tr data-type="afb"><td class="cell-name">28.5Ah AFB</td><td><span class="type-pill afb">AFB</span></td><td>Specialized UAV</td><td>28.5</td><td>3.84</td><td>3.0–4.5</td><td>550</td><td>3C</td><td>4C@10s</td><td>−30–60</td></tr>
+            <tr data-type="afb"><td class="cell-name">19Ah AFB</td><td><span class="type-pill afb">AFB</span></td><td>Specialized UAV</td><td>19</td><td>3.8</td><td>3.0–4.3</td><td>530</td><td>4C</td><td>5C@10s</td><td>−30–60</td></tr>
+            <tr data-type="afb"><td class="cell-name">20Ah AFB</td><td><span class="type-pill afb">AFB</span></td><td>Specialized UAV</td><td>20</td><td>3.84</td><td>3.0–4.5</td><td>540</td><td>3C</td><td>4C@10s</td><td>−30–60</td></tr>
+            <tr data-type="afb"><td class="cell-name">16Ah AFB</td><td><span class="type-pill afb">AFB</span></td><td>Specialized UAV</td><td>15.7</td><td>3.8</td><td>3.0–4.3</td><td>500</td><td>5C</td><td>6C@10s</td><td>−30–60</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="catalog-group" data-types="ssb">
+      <div class="catalog-group-head">
+        <h3>High-Energy-Density Semi-Solid-State Series</h3>
+        <span class="catalog-group-sub mono">SSB · Long-Range / Heavy-Load UAV / Robotics</span>
+      </div>
+      <p class="catalog-note">Semi-solid-state chemistry across long-range, heavy-load, and robotics platforms — wider temperature tolerance (down to −40°C) and documented cycle life at 80% state-of-health.</p>
+      <div class="table-scroll">
+        <table class="cell-table">
+          <thead>
+            <tr>
+              <th>Model</th>
+              <th>Chemistry</th>
+              <th>Application</th>
+              <th>Capacity (Ah)</th>
+              <th>Voltage Platform (V)</th>
+              <th>Energy Density (Wh/kg)</th>
+              <th>Cont. Discharge</th>
+              <th>Peak Pulse</th>
+              <th>Life Cycle (25°C)</th>
+              <th>Temp Range (°C)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-type="ssb"><td class="cell-name">28Ah SSB</td><td><span class="type-pill ssb">SSB</span></td><td>Long-Range UAV</td><td>28</td><td>3.6</td><td>320</td><td>5C</td><td>10C@10s</td><td>1000 cyc @80% SOH</td><td>−40–60</td></tr>
+            <tr data-type="ssb"><td class="cell-name">31Ah SSB</td><td><span class="type-pill ssb">SSB</span></td><td>Long-Range UAV</td><td>31</td><td>3.6</td><td>310</td><td>6C</td><td>10C@10s</td><td>1000 cyc @80% SOH</td><td>−40–60</td></tr>
+            <tr data-type="ssb"><td class="cell-name">35Ah SSB</td><td><span class="type-pill ssb">SSB</span></td><td>Long-Range UAV</td><td>35</td><td>3.6</td><td>320</td><td>6C</td><td>10C@10s</td><td>1000 cyc @80% SOH</td><td>−40–60</td></tr>
+            <tr data-type="ssb"><td class="cell-name">39Ah SSB</td><td><span class="type-pill ssb">SSB</span></td><td>Long-Range UAV</td><td>39</td><td>3.51</td><td>350</td><td>5C</td><td>10C@10s</td><td>500 cyc @80% SOH</td><td>−40–60</td></tr>
+            <tr data-type="ssb"><td class="cell-name">50Ah SSB</td><td><span class="type-pill ssb">SSB</span></td><td>Long-Range UAV</td><td>50</td><td>3.6</td><td>310</td><td>5C</td><td>10C@10s</td><td>1000 cyc @80% SOH</td><td>−40–60</td></tr>
+            <tr data-type="ssb"><td class="cell-name">27Ah SSB</td><td><span class="type-pill ssb">SSB</span></td><td>Heavy-Load UAV</td><td>27</td><td>3.65</td><td>275</td><td>8C</td><td>10C@90s</td><td>800 cyc @80% SOH</td><td>−40–60</td></tr>
+            <tr data-type="ssb"><td class="cell-name">30Ah SSB</td><td><span class="type-pill ssb">SSB</span></td><td>Heavy-Load UAV</td><td>30</td><td>3.75</td><td>210</td><td>12C</td><td>20C@10s</td><td>1500 cyc @80% SOH</td><td>−20–90</td></tr>
+            <tr data-type="ssb"><td class="cell-name">9Ah SSB</td><td><span class="type-pill ssb">SSB</span></td><td>Robotics</td><td>8.8</td><td>3.6</td><td>318</td><td>5C</td><td>8C@10s</td><td>1000 cyc @80% SOH</td><td>−40–60</td></tr>
+            <tr data-type="ssb"><td class="cell-name">13Ah SSB</td><td><span class="type-pill ssb">SSB</span></td><td>Robotics</td><td>13</td><td>3.6</td><td>310</td><td>4C</td><td>6C@10s</td><td>500 cyc @80% SOH</td><td>−30–60</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <p class="catalog-footnote">Catalog shown reflects one partner factory in our current network. LMB = lithium-metal battery. AFB = anode-free battery. SSB = semi-solid-state battery. Don't see the form factor or chemistry you need — pouch, cylindrical, prismatic, other capacities? <a href="#contact" style="color:var(--teal); text-decoration:underline;">Tell us your spec</a> and we'll check it against the rest of our supplier bench.</p>
   </div>
 </section>
 
@@ -502,13 +643,14 @@
           </svg>
           SylvaGrid <span class="brand-sub">TECHNOLOGIES CORP.</span>
         </div>
-        <p>Cell sourcing and export between China and North American pack manufacturers. Based in Richmond, BC.</p>
+        <p>Cell sourcing and export between Chinese cell manufacturers and pack manufacturers worldwide. Based in Richmond, BC.</p>
       </div>
       <div class="footer-cols">
         <div class="footer-col">
           <h4>Company</h4>
           <a href="#context">Why It's Hard</a>
           <a href="#services">Services</a>
+          <a href="#catalog">Cell Catalog</a>
           <a href="#process">Process</a>
         </div>
         <div class="footer-col">
@@ -524,6 +666,33 @@
     </div>
   </div>
 </footer>
+
+<script>
+  (function(){
+    var tabs = document.querySelectorAll('.catalog-tab');
+    var rows = document.querySelectorAll('.cell-table tbody tr');
+    var groups = document.querySelectorAll('.catalog-group');
+
+    tabs.forEach(function(tab){
+      tab.addEventListener('click', function(){
+        tabs.forEach(function(t){ t.classList.remove('active'); });
+        tab.classList.add('active');
+        var filter = tab.getAttribute('data-filter');
+
+        rows.forEach(function(row){
+          var type = row.getAttribute('data-type');
+          row.classList.toggle('is-hidden', filter !== 'all' && type !== filter);
+        });
+
+        groups.forEach(function(group){
+          var types = (group.getAttribute('data-types') || '').split(' ');
+          var hide = filter !== 'all' && types.indexOf(filter) === -1;
+          group.setAttribute('data-hidden', hide);
+        });
+      });
+    });
+  })();
+</script>
 
 </body>
 </html>
