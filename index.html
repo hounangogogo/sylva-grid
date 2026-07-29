@@ -265,8 +265,16 @@
   .type-pill.ssb{ color:var(--blue); border-color:var(--blue-dim); background:rgba(var(--blue-rgb),0.08); }
   .catalog-group[data-hidden="true"]{ display:none; }
   .catalog-footnote{ margin-top:28px; font-size:13px; color:var(--text-2); max-width:700px; }
+  .catalog-hero-cell{
+    height:220px; width:auto; display:block;
+    filter:drop-shadow(0 10px 20px rgba(var(--bg-0-rgb),0.35));
+  }
+  .catalog-intro-visual{ display:flex; align-items:center; gap:28px; }
   @media(max-width:760px){
     .catalog-intro{ flex-direction:column; align-items:flex-start; }
+    .catalog-intro-visual{ flex-direction:column; align-items:flex-start; gap:4px; }
+    .catalog-hero-cell{ margin:0 !important; transform:none !important; }
+    .catalog-intro-visual .section-head{ margin-left:0 !important; margin-top:16px; }
   }
 
   /* ---------- PROCESS ---------- */
@@ -534,10 +542,13 @@
 <section class="catalog" id="catalog">
   <div class="wrap">
     <div class="catalog-intro">
-      <div class="section-head" style="margin-bottom:0;">
-        <div class="section-label">Current catalog <span class="poetic-tag">— The Seed Bank</span></div>
-        <h2>16 cells, vetted and ready to quote.</h2>
-        <p>A live sample of the manufacturer portfolio we currently broker — specialized UAV, long-range, heavy-load, and robotics cells across lithium-metal, anode-free, and semi-solid-state chemistries. Full datasheets and pricing available on request.</p>
+      <div class="catalog-intro-visual">
+        <img class="catalog-hero-cell" src="images/cell-lmb.png" alt="Specialized UAV lithium-metal pouch cell">
+        <div class="section-head" style="margin-bottom:0;">
+          <div class="section-label">Current catalog <span class="poetic-tag">— The Seed Bank</span></div>
+          <h2>16 cells, vetted and ready to quote.</h2>
+          <p>A live sample of the manufacturer portfolio we currently broker — specialized UAV, long-range, heavy-load, and robotics cells across lithium-metal, anode-free, and semi-solid-state chemistries. Full datasheets and pricing available on request.</p>
+        </div>
       </div>
       <div class="catalog-tabs" role="tablist" aria-label="Filter cell catalog by chemistry">
         <button class="catalog-tab active" data-filter="all">All Chemistries</button>
